@@ -3,7 +3,7 @@
 
 A full-featured document management and note-taking application built with **Next.js**, inspired by **Notion**.
 
-![Notion Clone](https://notion-clone-demo.vercel.app/opengraph-image.png)
+
 
 ---
 
