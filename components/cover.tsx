@@ -8,6 +8,7 @@ import { useCoverImage } from "@/hooks/use-cover-image";
 import { useMutation } from "convex/react";
 import { api } from "@/convex/_generated/api";
 import { Id } from "@/convex/_generated/dataModel";
+import { toast } from "sonner";
 
 interface CoverImageProps {
     url?: string;
@@ -25,10 +26,18 @@ export const Cover = ({
 
     const removeCoverImage = async (e: React.MouseEvent) => {
         e.stopPropagation();
-        await update({
-            id: id,
-            coverImage: undefined
-        })
+
+        try {
+            await update({
+                id: id,
+                coverImage: undefined
+            });
+
+            toast.success("Cover image removed");
+        } catch (error) {
+            console.error("Error removing cover image:", error);
+            toast.error("Failed to remove cover image");
+        }
     }
 
     return (
