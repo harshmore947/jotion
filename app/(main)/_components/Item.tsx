@@ -51,10 +51,9 @@ export const Item = ({ label, onClick, icon: Icon, active, documentIcon, isSearc
     const onCreate = (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
         event.stopPropagation();
         if (!id) return;
-        const promise = create({ title: "Untiled", parentDocument: id }).then((documentId) => {
+        const promise = create({ title: "Untiled", parentDocument: id }).then(() => {
             if (!expanded) {
                 onExpand?.();
-                // router.push(`/documents/${documentId}`);
             }
         });
         toast.promise(promise, {

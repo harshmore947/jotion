@@ -5,7 +5,7 @@ import { File } from "lucide-react"
 import { useQuery } from "convex/react"
 import { useRouter } from "next/navigation"
 import { useUser } from "@clerk/clerk-react"
-import { Command, CommandDialog, CommandEmpty, CommandInput, CommandItem, CommandList, } from "./ui/command"
+import { CommandDialog, CommandEmpty, CommandInput, CommandItem, CommandList, } from "./ui/command"
 import { useSearch } from "@/hooks/use-search"
 import { api } from "@/convex/_generated/api"
 import { CommandGroup } from "cmdk"
@@ -34,7 +34,7 @@ export const SearchCommand = () => {
     }
     document.addEventListener("keydown", down);
     return () => document.removeEventListener('keydown', down);
-  }, [])
+  }, [toggle])
 
   useEffect(() => {
     setIsMounted(true)

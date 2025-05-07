@@ -7,14 +7,12 @@ import { api } from "@/convex/_generated/api";
 import { Id } from "@/convex/_generated/dataModel";
 import { useMutation, useQuery } from "convex/react";
 import { Search, Trash, Undo } from "lucide-react";
-import { useParams } from "next/navigation";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { toast } from "sonner";
 
 const TrashBox = () => {
   const router = useRouter();
-  const params = useParams();
   const document = useQuery(api.douments.getTrash);
   const restore = useMutation(api.douments.restore);
   const remove = useMutation(api.douments.remove);
@@ -25,17 +23,12 @@ const TrashBox = () => {
     return document.title.toLowerCase().includes(search.toLowerCase());
   })
 
-  const onClick = (documentId: String) => {
-    router.push(`/documents/${documentId}`);
-  };
-
   const onRestore = (event: React.MouseEvent<HTMLDivElement, MouseEvent>, documentId: Id<"douments">) => {
     event.stopPropagation();
     const promise = restore({ id: documentId })
     toast.promise(promise, {
       success: "Note restored successfully",
     })
-
   }
   const onRemove = (documentId: Id<'douments'>) => {
     try {

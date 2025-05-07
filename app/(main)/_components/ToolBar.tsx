@@ -117,6 +117,7 @@ const ToolBar = ({ initialData, preview }: ToolBarProps) => {
           onBlur={disableInput}
           onKeyDown={onKeyDown}
           onChange={(e) => onInput(e.target.value)}
+          value={value}
           className="text-5xl bg-transparent font-bold break-words outline text-[#3F3F3F] dark:text-[#cfcfcf] resize-none"
         />
       ) : (

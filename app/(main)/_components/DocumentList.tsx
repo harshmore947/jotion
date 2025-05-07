@@ -12,13 +12,11 @@ import { FileIcon } from "lucide-react";
 interface DocumentListProps {
   parentDocumentId?: Id<"douments">;
   level?: number;
-  data?: Doc<"douments">;
 }
 
 export const DocumentsList = ({
   parentDocumentId,
   level,
-  data,
 }: DocumentListProps) => {
   const params = useParams();
   const router = useRouter();

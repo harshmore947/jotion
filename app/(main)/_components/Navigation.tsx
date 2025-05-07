@@ -34,19 +34,46 @@ export const Navigation = () => {
   const search = useSearch();
   const settings = useSetting();
 
+  const collapse = () => {
+    if (sidebarRef.current && navbarRef.current) {
+      setIsCollasped(true);
+      setIsResetting(true);
+
+      sidebarRef.current.style.width = "0";
+      navbarRef.current.style.setProperty("width", "100%");
+      navbarRef.current.style.setProperty('left', "0");
+      setTimeout(() => setIsResetting(false), 300);
+    }
+  }
+
+  const resetWidth = () => {
+    if (sidebarRef.current && navbarRef.current) {
+      setIsCollasped(false);
+      setIsResetting(true);
+
+      sidebarRef.current.style.width = isMobile ? "100%" : "240px";
+      navbarRef.current.style.setProperty("width", isMobile ? "0" : "calc(100% -240px)");
+      navbarRef.current.style.setProperty("left", isMobile ? "100%" : "240px");
+      setTimeout(() => {
+        setIsResetting(false);
+      }, 300);
+    }
+  }
+
   useEffect(() => {
     if (isMobile) {
       collapse();
     } else {
       resetWidth();
     }
-  }, [isMobile])
+  }, [isMobile, resetWidth])
 
   useEffect(() => {
     if (isMobile) {
       collapse();
     }
   }, [pathname, isMobile])
+
   const handleMouseDown = (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     event.preventDefault();
     event.stopPropagation();
@@ -75,32 +102,6 @@ export const Navigation = () => {
     isResizingRef.current = false;
     document.removeEventListener('mousemove', handleMouseMove);
     document.removeEventListener('mouseup', handleMouseUp);
-  }
-
-  const resetWidth = () => {
-    if (sidebarRef.current && navbarRef.current) {
-      setIsCollasped(false);
-      setIsResetting(true);
-
-      sidebarRef.current.style.width = isMobile ? "100%" : "240px";
-      navbarRef.current.style.setProperty("width", isMobile ? "0" : "calc(100% -240px)");
-      navbarRef.current.style.setProperty("left", isMobile ? "100%" : "240px");
-      setTimeout(() => {
-        setIsResetting(false);
-      }, 300);
-    }
-  }
-
-  const collapse = () => {
-    if (sidebarRef.current && navbarRef.current) {
-      setIsCollasped(true);
-      setIsResetting(true);
-
-      sidebarRef.current.style.width = "0";
-      navbarRef.current.style.setProperty("width", "100%");
-      navbarRef.current.style.setProperty('left', "0");
-      setTimeout(() => setIsResetting(false), 300);
-    }
   }
 
   const handleCreate = () => {

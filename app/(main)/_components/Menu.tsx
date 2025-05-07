@@ -1,6 +1,5 @@
 "use client"
 
-import { Button } from "@/components/ui/button"
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
 import { Skeleton } from "@/components/ui/skeleton"
 import { api } from "@/convex/_generated/api"
@@ -8,7 +7,6 @@ import { Id } from "@/convex/_generated/dataModel"
 import { useUser } from "@clerk/clerk-react"
 import { useMutation } from "convex/react"
 import { MoreHorizontal, Trash } from "lucide-react"
-import { useRouter } from "next/navigation"
 import { toast } from "sonner"
 
 interface MenuProps {
@@ -16,7 +14,6 @@ interface MenuProps {
 }
 
 export const Menu = ({ documentId }: MenuProps) => {
-  const router = useRouter();
   const { user } = useUser();
 
   const archive = useMutation(api.douments.archive);

@@ -4,7 +4,6 @@ import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
@@ -44,12 +43,12 @@ export const UserItem = () => {
           <div className="flex items-center gap-x-2">
             <div className="rounded-md bg-secondary p-1">
               <Avatar className="h-8 w-8">
-                <AvatarImage src={user?.imageUrl}/>
+                <AvatarImage src={user?.imageUrl} />
               </Avatar>
             </div>
             <div className="space-y-1">
               <p className="text-sm line-clamp-1">{user?.fullName}&apos;s Jotion</p>
-            </div>  
+            </div>
             <div className="">
             </div>
           </div>
