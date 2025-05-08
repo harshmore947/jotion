@@ -3,7 +3,7 @@
 import { cn } from "@/lib/utils";
 import { ChevronLeft, MenuIcon, Plus, PlusCircle, Search, Settings, Trash } from "lucide-react";
 import { useParams, usePathname, useRouter } from "next/navigation";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useCallback } from "react";
 import { useMediaQuery } from "usehooks-ts";
 import { UserItem } from "./UserItem";
 import { useMutation } from "convex/react";
@@ -46,7 +46,7 @@ export const Navigation = () => {
     }
   }
 
-  const resetWidth = () => {
+  const resetWidth = useCallback(() => {
     if (sidebarRef.current && navbarRef.current) {
       setIsCollasped(false);
       setIsResetting(true);
@@ -58,7 +58,7 @@ export const Navigation = () => {
         setIsResetting(false);
       }, 300);
     }
-  }
+  }, [isMobile]);
 
   useEffect(() => {
     if (isMobile) {
