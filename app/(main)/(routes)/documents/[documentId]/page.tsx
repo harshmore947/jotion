@@ -1,13 +1,14 @@
 import { Id } from "@/convex/_generated/dataModel";
 import { DocumentContent } from "./_components/DocumentContent";
 
-interface DocumentIdPageProps {
+interface PageProps {
   params: {
     documentId: string;
   };
+  searchParams: { [key: string]: string | string[] | undefined };
 }
 
-const DocumentId = ({ params }: DocumentIdPageProps) => {
+const DocumentId = async ({ params }: PageProps) => {
   return <DocumentContent documentId={params.documentId as Id<"douments">} />;
 };
 
