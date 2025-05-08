@@ -8,7 +8,7 @@ interface PageProps {
   searchParams: { [key: string]: string | string[] | undefined };
 }
 
-const DocumentId = async ({ params }: PageProps) => {
+const DocumentId = ({ params }: PageProps) => {
   return <DocumentContent documentId={params.documentId as Id<"douments">} />;
 };
 
